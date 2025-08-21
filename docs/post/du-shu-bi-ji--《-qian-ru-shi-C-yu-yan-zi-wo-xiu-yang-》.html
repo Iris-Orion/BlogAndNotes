@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="### 2.1 & 2.2
+不同架构的CPU，指令集不同，支持运行的机器指令也不同，但是有一条是相同的：每一种CPU只能支持有限个指令，任何复杂的运算最终都可以分解成有限个基本指令来完成：加、减、乘、除、与、或、非、移位等算术运算或逻辑运算。">
+<meta property="og:title" content="读书笔记-《嵌入式C语言自我修养》">
+<meta property="og:description" content="### 2.1 & 2.2
+不同架构的CPU，指令集不同，支持运行的机器指令也不同，但是有一条是相同的：每一种CPU只能支持有限个指令，任何复杂的运算最终都可以分解成有限个基本指令来完成：加、减、乘、除、与、或、非、移位等算术运算或逻辑运算。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://Iris-Orion.github.io/BlogAndNotes/post/du-shu-bi-ji--%E3%80%8A-qian-ru-shi-C-yu-yan-zi-wo-xiu-yang-%E3%80%8B.html">
+<meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
+<title>读书笔记-《嵌入式C语言自我修养》</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">读书笔记-《嵌入式C语言自我修养》</h1>
+<div class="title-right">
+    <a href="https://Iris-Orion.github.io/BlogAndNotes" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Iris-Orion/BlogAndNotes/issues/2" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h3>2.1 &amp; 2.2</h3>
+<p>不同架构的CPU，指令集不同，支持运行的机器指令也不同，但是有一条是相同的：每一种CPU只能支持有限个指令，任何复杂的运算最终都可以分解成有限个基本指令来完成：加、减、乘、除、与、或、非、移位等算术运算或逻辑运算。</p>
+<p>CPU内部构造很简单，只包含基本的算术逻辑运算单元、控制单元、寄存器等，仅支持有限个指令。CPU支持的有限个基本指令集合，称为指令集。程序代码存储在内部存储器（内存）中，CPU可以从内存中一条一条地取指令、翻译指令并执行它。</p>
+<p>算术逻辑单元（Arithmetic and Logic Unit，ALU）</p>
+<p>CPU内部有个程序计数器（Program Counter，PC）​，系统上电后默认初始化为0，控制单元会根据这个PC寄存器中的地址到对应的内存RAM中取指令，然后PC寄存器中的地址自动加一。通过这种操作，控制单元就可以不停地从内存RAM中取指令、翻译指令、运行指令，程序就可以源源不断地运行下去了。</p>
+<p>由基本指令组成的不同组合，我们称为程序。为了编程方便，我们给每个二进制指令起一个别名，使用一个助记符表示，这些助记符就是汇编语言，由助记符组成的指令序列就是汇编程序。</p>
+<p>前端仿真通过后，通过EDA工具就可以将HDL代码转换成具体的逻辑门电路。专业说法是将HDL代码翻译成门级网表：Gate-level netlist，网表文件用来描述电路中元器件之间的连接关系。有数字电路基础的人都知道，任何一个逻辑运算都可以转化为基本的门级电路（与门、或门、非门等）的组合来实现，而网表就是用来描述这些门级电路的连接信息的。</p>
+<p>通过逻辑综合生成的门级电路，已经包含了延时等各种信息，接下来还需要对这些门级电路进行进一步的静态时序分析和验证。为了提高工作效率，除了使用仿真软件，有时候也会借助FPGA平台进行验证。前端仿真发生在逻辑综合之前，专注于验证电路的逻辑功能是否正确；逻辑综合后的仿真，一般称为后端仿真，简称后仿。后端仿真会考虑延时等因素。</p>
+<h3>2.3 计算机体系结构</h3>
+<p>CPU内部的结构其实很简单，除了ALU、控制单元、寄存器和少量Cache</p>
+<p>存储器按照存储类型可分为易失性存储器和非易失性存储器。易失性存储器如SRAM、DDR SDRAM等，一般用作计算机的内部存储器，所以又被称为内存。这类存储器支持随机访问，CPU可以随机到它的任意地址去读写数据，访问非常方便，但缺点是断电后数据会立即消失，无法永久保存。非易失性存储器一般用作计算机的外部存储器，也被称为外存，如磁盘、Flash等。这类存储器支持数据的永久保存，断电后数据也不会消失，但缺点是不支持随机访问，读写速度也不如内存。</p>
+<p>在冯·诺依曼架构的计算机中，程序中的指令和数据同时存放在同一个存储器的不同物理地址上，一般我们会把指令和数据存放到外存储器中。当程序运行时，再把这些指令和数据从外存储器加载到内存储器（内存储器支持随机访问并且访问速度快）​，冯·诺依曼架构的特点是结构简单，工程上容易实现，所以很多现代处理器都采用这种架构，如X86、ARM7、MIPS等。</p>
+<p>哈弗架构的特点是：指令和数据被分开独立存储，它们分别被存放到程序存储器和数据存储器。每个存储器都独立编址，独立访问，而且指令和数据可以在一个时钟周期内并行访问。使用哈弗架构的处理器运行效率更高，但缺点是CPU实现会更加复杂。8051系列的单片机采用的就是哈弗架构。</p>
+<p>CPU和RAM之间传输数据，要经过找地址、取数据、配置、等待、输出数据等多个时钟周期，内存带宽瓶颈会拖慢CPU的工作节奏，进而影响计算机系统的整体运行效率。为了减少内存瓶颈带来的影响，CPU引入了Cache机制：指令Cache和数据Cache，用来缓存数据和指令，提升计算机的运行效率。</p>
+<p>现代的ARM SoC芯片架构一般如图2-27所示，SoC芯片内部的Cache层采用哈弗架构，集成了指令Cache和数据Cache。当CPU到RAM中读数据时，内存RAM不是一次只传输要读取的指定字节，而是一次缓存一批数据到Cache中，等下次CPU再去取指令和数据时，可以先到这两个Cache中看看要读取的数据是不是已经缓存到这里了，如果没有缓存命中，再到内存中读取。当CPU写数据到内存RAM时，也可以先把数据暂时写到Cache里，然后等待时机将Cache中的数据刷新到内存中。Cache缓存机制大大提高了CPU的访问效率，而SoC芯片外部则采用冯·诺依曼架构，工程实现简单。现代的计算机集合了这两种架构的优点，因此我们很难界定一款芯片到底是冯·诺依曼架构还是哈弗架构，我们就姑且称之为混合架构吧。</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://Iris-Orion.github.io/BlogAndNotes">Back To The Basic</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Iris-Orion/BlogAndNotes");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+
+
+</html>
