@@ -1,5 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Back To The Basic</title><link>https://Iris-Orion.github.io/BlogAndNotes</link><description>Music comes from noise</description><copyright>Back To The Basic</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Iris-Orion.github.io/BlogAndNotes</link></image><lastBuildDate>Tue, 26 Aug 2025 12:23:00 +0000</lastBuildDate><managingEditor>Back To The Basic</managingEditor><ttl>60</ttl><webMaster>Back To The Basic</webMaster><item><title>厨房的一切</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/chu-fang-de-yi-qie.html</link><description>### 七头一脑
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Back To The Basic</title><link>https://Iris-Orion.github.io/BlogAndNotes</link><description>Music comes from noise</description><copyright>Back To The Basic</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Iris-Orion.github.io/BlogAndNotes</link></image><lastBuildDate>Thu, 28 Aug 2025 11:58:36 +0000</lastBuildDate><managingEditor>Back To The Basic</managingEditor><ttl>60</ttl><webMaster>Back To The Basic</webMaster><item><title>shell使用</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/shell-shi-yong.html</link><description>cat /etc/shells
+
+echo $HOME
+
+echo $PATH
+
+echo $SHEEL  系统环境变量
+
+echo $0 当前正在执行的脚本的名称
+
+/bin/sh
+
+切换不同版本的shell
+
+exit
+
+shell接收用户输入的命令，
+
+。</description><guid isPermaLink="true">https://Iris-Orion.github.io/BlogAndNotes/post/shell-shi-yong.html</guid><pubDate>Thu, 28 Aug 2025 11:58:05 +0000</pubDate></item><item><title>厨房的一切</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/chu-fang-de-yi-qie.html</link><description>### 七头一脑
 枸杞头、马兰头、荠菜头、香椿头、苜蓿头、豌豆头、小蒜头和菊花脑
 
 ### 水八仙
