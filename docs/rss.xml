@@ -1,6 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Back To The Basic</title><link>https://Iris-Orion.github.io/BlogAndNotes</link><description>Attenion is all you need. Music comes from noise</description><copyright>Back To The Basic</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Iris-Orion.github.io/BlogAndNotes</link></image><lastBuildDate>Tue, 09 Sep 2025 11:54:40 +0000</lastBuildDate><managingEditor>Back To The Basic</managingEditor><ttl>60</ttl><webMaster>Back To The Basic</webMaster><item><title>播客总结</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/bo-ke-zong-jie.html</link><description>## 无人知晓EP40
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Back To The Basic</title><link>https://Iris-Orion.github.io/BlogAndNotes</link><description>Attenion is all you need. Music comes from noise</description><copyright>Back To The Basic</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Iris-Orion.github.io/BlogAndNotes</link></image><lastBuildDate>Tue, 09 Sep 2025 12:02:36 +0000</lastBuildDate><managingEditor>Back To The Basic</managingEditor><ttl>60</ttl><webMaster>Back To The Basic</webMaster><item><title>播客总结</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/bo-ke-zong-jie.html</link><description>
+&lt;details&gt;
+&lt;summary&gt;无人知晓EP27&lt;/summary&gt;
+&lt;p&gt;
+
+## 无人知晓EP27
+
+这里是内容
+
+&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;details&gt;
+&lt;summary&gt;无人知晓EP40&lt;/summary&gt;
+&lt;p&gt;
+
+## 无人知晓EP40
+
 ### 原文使用通义听悟转译生成
+
 #### E40 够与多
 发言人1   01:18
 Hello, 大家好，我是梦妍。</description><guid isPermaLink="true">https://Iris-Orion.github.io/BlogAndNotes/post/bo-ke-zong-jie.html</guid><pubDate>Tue, 09 Sep 2025 11:10:03 +0000</pubDate></item><item><title>shell使用</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/shell-shi-yong.html</link><description>cat /etc/shells
