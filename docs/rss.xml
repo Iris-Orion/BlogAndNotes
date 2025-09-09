@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Back To The Basic</title><link>https://Iris-Orion.github.io/BlogAndNotes</link><description>Music comes from noise</description><copyright>Back To The Basic</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Iris-Orion.github.io/BlogAndNotes</link></image><lastBuildDate>Thu, 28 Aug 2025 11:58:36 +0000</lastBuildDate><managingEditor>Back To The Basic</managingEditor><ttl>60</ttl><webMaster>Back To The Basic</webMaster><item><title>shell使用</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/shell-shi-yong.html</link><description>cat /etc/shells
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Back To The Basic</title><link>https://Iris-Orion.github.io/BlogAndNotes</link><description>Music comes from noise</description><copyright>Back To The Basic</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Iris-Orion.github.io/BlogAndNotes</link></image><lastBuildDate>Tue, 09 Sep 2025 11:16:46 +0000</lastBuildDate><managingEditor>Back To The Basic</managingEditor><ttl>60</ttl><webMaster>Back To The Basic</webMaster><item><title>播客总结</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/bo-ke-zong-jie.html</link><description>## 无人知晓EP40
+### 原文使用通义听悟转译生成
+#### E40 够与多
+发言人1   01:18
+Hello, 大家好，我是梦妍。</description><guid isPermaLink="true">https://Iris-Orion.github.io/BlogAndNotes/post/bo-ke-zong-jie.html</guid><pubDate>Tue, 09 Sep 2025 11:10:03 +0000</pubDate></item><item><title>shell使用</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/shell-shi-yong.html</link><description>cat /etc/shells
 
 echo $HOME
 
@@ -37,4 +41,12 @@ https://www.luogu.com.cn/
 
 CSDIY： https://csdiy.wiki/
 
-科学空间：https://spaces.ac.cn/author/1/5/。</description><guid isPermaLink="true">https://Iris-Orion.github.io/BlogAndNotes/post/ge-lei-Links-shou-lu.html</guid><pubDate>Tue, 19 Aug 2025 13:33:23 +0000</pubDate></item></channel></rss>
+科学空间：https://spaces.ac.cn/author/1/5/
+
+linux do: https://linux.do/
+
+### 硬件
+https://www.eevblog.com/
+
+### 医疗
+https://www.mayoclinic.org/。</description><guid isPermaLink="true">https://Iris-Orion.github.io/BlogAndNotes/post/ge-lei-Links-shou-lu.html</guid><pubDate>Tue, 19 Aug 2025 13:33:23 +0000</pubDate></item></channel></rss>

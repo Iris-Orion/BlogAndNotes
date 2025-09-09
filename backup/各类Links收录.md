@@ -13,3 +13,11 @@ https://www.luogu.com.cn/
 CSDIY： https://csdiy.wiki/
 
 科学空间：https://spaces.ac.cn/author/1/5/
+
+linux do: https://linux.do/
+
+### 硬件
+https://www.eevblog.com/
+
+### 医疗
+https://www.mayoclinic.org/
