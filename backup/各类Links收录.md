@@ -1,4 +1,5 @@
 ### AI
+Ilya Sutskever recomended readings
 https://aman.ai/primers/ai/top-30-papers/
 
 ### 嵌入式（MCU类别）
