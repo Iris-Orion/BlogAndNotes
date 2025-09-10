@@ -12,11 +12,9 @@
     </script>
 <meta name="description" content="### 指针
 
-''' c++
+``` c++
 #include <iostream>
-
 #define LOG(x) std::cout << x << std::endl;
-
 int main()
 {
 	// equal void* ptr = nullptr; // equal void* ptr = NULL
@@ -45,7 +43,8 @@ int main()
 	
 	std::cin.get();
 }
-'''
+
+```
 
 <img width='1265' height='606' alt='Image' src='https://github.com/user-attachments/assets/1cc6bee7-9c76-430d-9ac3-f1145368e566' />
 
@@ -53,11 +52,9 @@ int main()
 <meta property="og:title" content="Cherno Cpp Notes">
 <meta property="og:description" content="### 指针
 
-''' c++
+``` c++
 #include <iostream>
-
 #define LOG(x) std::cout << x << std::endl;
-
 int main()
 {
 	// equal void* ptr = nullptr; // equal void* ptr = NULL
@@ -86,7 +83,8 @@ int main()
 	
 	std::cin.get();
 }
-'''
+
+```
 
 <img width='1265' height='606' alt='Image' src='https://github.com/user-attachments/assets/1cc6bee7-9c76-430d-9ac3-f1145368e566' />
 
@@ -95,7 +93,7 @@ int main()
 <meta property="og:url" content="https://Iris-Orion.github.io/BlogAndNotes/post/Cherno%20Cpp%20Notes.html">
 <meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
 <title>Cherno Cpp Notes</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -162,38 +160,37 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h3>指针</h3>
-<p>""" c++<br>
-#include </p>
-<p>#define LOG(x) std::cout &lt;&lt; x &lt;&lt; std::endl;</p>
-<p>int main()<br>
-{<br>
-// equal void* ptr = nullptr; // equal void* ptr = NULL<br>
-void* ptr = 0;</p>
-<pre class="notranslate"><code class="notranslate">int var = 8;				// create a var in stack
+<div class="highlight highlight-source-c++"><pre class="notranslate">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">define</span> <span class="pl-en">LOG</span>(<span class="pl-v">x</span>) std::cout &lt;&lt; x &lt;&lt; std::endl;
+<span class="pl-k">int</span> <span class="pl-en">main</span>()
+{
+	<span class="pl-c"><span class="pl-c">//</span> equal void* ptr = nullptr; // equal void* ptr = NULL</span>
+	<span class="pl-k">void</span>* ptr = <span class="pl-c1">0</span>; 
+	
+	<span class="pl-k">int</span> var = <span class="pl-c1">8</span>;				<span class="pl-c"><span class="pl-c">//</span> create a var in stack</span>
 
-// types doesn't matter
-//void* ptr2 = &amp;var;		// take the memory address of var
-int* ptr2 = &amp;var;			
-//double* ptr2 = (double*)&amp;var;
+	<span class="pl-c"><span class="pl-c">//</span> types doesn't matter</span>
+	<span class="pl-c"><span class="pl-c">//</span>void* ptr2 = &amp;var;		// take the memory address of var</span>
+	<span class="pl-k">int</span>* ptr2 = &amp;var;			
+	<span class="pl-c"><span class="pl-c">//</span>double* ptr2 = (double*)&amp;var;</span>
 
-*ptr2 = 10; // derefence
-LOG(var);
+	*ptr2 = <span class="pl-c1">10</span>; <span class="pl-c"><span class="pl-c">//</span> derefence</span>
+	<span class="pl-c1">LOG</span>(var);
 
-// create data on heap, should delete after using
-char* buffer = new char[8];
-memset(buffer, 0, 8);
+	<span class="pl-c"><span class="pl-c">//</span> create data on heap, should delete after using</span>
+	<span class="pl-k">char</span>* buffer = <span class="pl-k">new</span> <span class="pl-k">char</span>[<span class="pl-c1">8</span>];
+	<span class="pl-c1">memset</span>(buffer, <span class="pl-c1">0</span>, <span class="pl-c1">8</span>);
 
-// pointers to pointers
-char** ptr3 = &amp;buffer;
+	<span class="pl-c"><span class="pl-c">//</span> pointers to pointers</span>
+	<span class="pl-k">char</span>** ptr3 = &amp;buffer;
 
-delete[] buffer;
+	<span class="pl-k">delete[]</span> buffer;
 
-// pointers are also variables
-
-std::cin.get();
-</code></pre>
-<p>}<br>
-"""</p>
+	<span class="pl-c"><span class="pl-c">//</span> pointers are also variables</span>
+	
+	std::cin.<span class="pl-c1">get</span>();
+}
+</pre></div>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/1cc6bee7-9c76-430d-9ac3-f1145368e566"><img width="1265" height="606" alt="Image" src="https://github.com/user-attachments/assets/1cc6bee7-9c76-430d-9ac3-f1145368e566" style="max-width: 100%; height: auto; max-height: 606px;"></a></p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/9d0a62e5-0107-432b-90fb-c607d6befe7c"><img width="962" height="967" alt="Image" src="https://github.com/user-attachments/assets/9d0a62e5-0107-432b-90fb-c607d6befe7c" style="max-width: 100%; height: auto; max-height: 967px;"></a></p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
