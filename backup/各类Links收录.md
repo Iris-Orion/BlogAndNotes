@@ -1,3 +1,6 @@
+### AI
+https://aman.ai/primers/ai/top-30-papers/
+
 ### 嵌入式（MCU类别）
 https://deepbluembedded.com/esp32-wifi-library-examples-tutorial-arduino/
 
