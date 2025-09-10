@@ -1,3 +1,6 @@
+### Robot
+https://rcfs.ch/#
+
 ### AI
 Ilya Sutskever recomended readings
 https://aman.ai/primers/ai/top-30-papers/
