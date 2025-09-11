@@ -1,9 +1,17 @@
+| Description | Links|
+| ----------- | ----------- |
+| Header      | Title       |
+
+
 ### Robot
-https://rcfs.ch/#
+| Description | Links|
+| ----------- | ----------- |
+| rcfs     | [Links       ](https://rcfs.ch/#)|
 
 ### AI
-Ilya Sutskever recomended readings
-https://aman.ai/primers/ai/top-30-papers/
+| Description | Links|
+| ----------- | ----------- |
+| Ilya Sutskever recomended readings| https://aman.ai/primers/ai/top-30-papers/|
 
 ### 嵌入式（MCU类别）
 https://deepbluembedded.com/esp32-wifi-library-examples-tutorial-arduino/
@@ -13,6 +21,12 @@ youtube字幕提取：
 https://decopy.ai/zh/youtube-subtitle-downloader/
 
 ### OJ及判题：
+| Description | Links|
+| ----------- | ----------- |
+| vjudge      | [Links](https://vjudge.net/)|
+| onlinejudge      | [Links](https://onlinejudge.org/)       |
+|洛谷| [Links](https://www.luogu.com.cn/)|
+
 https://vjudge.net/
 https://onlinejudge.org/
 https://www.luogu.com.cn/

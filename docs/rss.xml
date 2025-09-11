@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Back To The Basic</title><link>https://Iris-Orion.github.io/BlogAndNotes</link><description>Attenion is all you need. Music comes from noise</description><copyright>Back To The Basic</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Iris-Orion.github.io/BlogAndNotes</link></image><lastBuildDate>Wed, 10 Sep 2025 13:43:32 +0000</lastBuildDate><managingEditor>Back To The Basic</managingEditor><ttl>60</ttl><webMaster>Back To The Basic</webMaster><item><title>播客总结</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/bo-ke-zong-jie.html</link><description>### 原文使用通义听悟转译生成
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Back To The Basic</title><link>https://Iris-Orion.github.io/BlogAndNotes</link><description>Attenion is all you need. Music comes from noise</description><copyright>Back To The Basic</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Iris-Orion.github.io/BlogAndNotes</link></image><lastBuildDate>Thu, 11 Sep 2025 09:16:02 +0000</lastBuildDate><managingEditor>Back To The Basic</managingEditor><ttl>60</ttl><webMaster>Back To The Basic</webMaster><item><title>播客总结</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/bo-ke-zong-jie.html</link><description>### 原文使用通义听悟转译生成
 
 &lt;details&gt;
 &lt;summary&gt;无人知晓原文 EP27&lt;/summary&gt;
@@ -70,12 +70,20 @@ int main()
 
 &lt;img width='962' height='967' alt='Image' src='https://github.com/user-attachments/assets/9d0a62e5-0107-432b-90fb-c607d6befe7c' /&gt;。</description><guid isPermaLink="true">https://Iris-Orion.github.io/BlogAndNotes/post/Cherno%20Cpp%20Notes.html</guid><pubDate>Fri, 22 Aug 2025 12:52:09 +0000</pubDate></item><item><title>简单的冥想实践</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/jian-dan-de-ming-xiang-shi-jian.html</link><description>### 个人的冥想实践设置
 20min的倒计时闹钟，简单的呼吸法冥想，5s一次吸气，5s一次呼气，配合冥想音乐更佳。</description><guid isPermaLink="true">https://Iris-Orion.github.io/BlogAndNotes/post/jian-dan-de-ming-xiang-shi-jian.html</guid><pubDate>Fri, 22 Aug 2025 12:51:13 +0000</pubDate></item><item><title>读书笔记-《嵌入式C语言自我修养》</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/du-shu-bi-ji--%E3%80%8A-qian-ru-shi-C-yu-yan-zi-wo-xiu-yang-%E3%80%8B.html</link><description>### 2.1 &amp; 2.2
-不同架构的CPU，指令集不同，支持运行的机器指令也不同，但是有一条是相同的：每一种CPU只能支持有限个指令，任何复杂的运算最终都可以分解成有限个基本指令来完成：加、减、乘、除、与、或、非、移位等算术运算或逻辑运算。</description><guid isPermaLink="true">https://Iris-Orion.github.io/BlogAndNotes/post/du-shu-bi-ji--%E3%80%8A-qian-ru-shi-C-yu-yan-zi-wo-xiu-yang-%E3%80%8B.html</guid><pubDate>Thu, 21 Aug 2025 10:54:15 +0000</pubDate></item><item><title>各类Links收录</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/ge-lei-Links-shou-lu.html</link><description>### Robot
-https://rcfs.ch/#
+不同架构的CPU，指令集不同，支持运行的机器指令也不同，但是有一条是相同的：每一种CPU只能支持有限个指令，任何复杂的运算最终都可以分解成有限个基本指令来完成：加、减、乘、除、与、或、非、移位等算术运算或逻辑运算。</description><guid isPermaLink="true">https://Iris-Orion.github.io/BlogAndNotes/post/du-shu-bi-ji--%E3%80%8A-qian-ru-shi-C-yu-yan-zi-wo-xiu-yang-%E3%80%8B.html</guid><pubDate>Thu, 21 Aug 2025 10:54:15 +0000</pubDate></item><item><title>各类Links收录</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/ge-lei-Links-shou-lu.html</link><description>| Description | Links|
+| ----------- | ----------- |
+| Header      | Title       |
+
+
+### Robot
+| Description | Links|
+| ----------- | ----------- |
+| rcfs     | [Links       ](https://rcfs.ch/#)|
 
 ### AI
-Ilya Sutskever recomended readings
-https://aman.ai/primers/ai/top-30-papers/
+| Description | Links|
+| ----------- | ----------- |
+| Ilya Sutskever recomended readings| https://aman.ai/primers/ai/top-30-papers/|
 
 ### 嵌入式（MCU类别）
 https://deepbluembedded.com/esp32-wifi-library-examples-tutorial-arduino/
@@ -85,6 +93,12 @@ youtube字幕提取：
 https://decopy.ai/zh/youtube-subtitle-downloader/
 
 ### OJ及判题：
+| Description | Links|
+| ----------- | ----------- |
+| vjudge      | [Links](https://vjudge.net/)|
+| onlinejudge      | [Links](https://onlinejudge.org/)       |
+|洛谷| [Links](https://www.luogu.com.cn/)|
+
 https://vjudge.net/
 https://onlinejudge.org/
 https://www.luogu.com.cn/
