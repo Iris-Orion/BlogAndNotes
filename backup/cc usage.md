@@ -1,0 +1,184 @@
+![[context_window.png|786]]
+
+<img width="1440" height="440" alt="Image" src="https://github.com/user-attachments/assets/63a82b9f-34a6-4560-b098-7fb3dd2acc5c" />
+
+Say you've just asked Claude to do something and it's finished—you’ve now got some information in context (tool calls, tool outputs, your instructions) and you have a surprising number of options for what to do next:  
+假设你刚刚让 Claude 完成某项任务，现在它已经处理完毕——此时上下文中已包含一些信息（工具调用记录、工具输出结果、你的指令），而接下来你拥有令人惊讶的多种选择方案：
+
+- **Continue** — send another message in the same session  
+    继续对话——在同一会话中发送新消息
+- **`/rewind` (esc esc)** — jump back to a previous message and try again from there  
+    `/rewind` （按两次 esc 键）——跳转回之前的消息节点，从该处重新尝试
+- **`/clear`** — start a new session, usually with a brief you've distilled from what you just learned  
+    `/clear` ——开启全新会话，通常基于你从当前对话中提炼出的要点说明
+- **Compact** — summarize the session so far and keep going on top of the summary  
+    紧凑模式——总结当前会话内容，并在总结基础上继续推进
+- **Subagents** — delegate the next chunk of work to an agent with its own clean context, and only pull its result back in  
+    子代理模式——将下一部分工作委托给拥有独立干净上下文的代理，仅将其结果带回主会话
+
+## **Rewinding instead of correcting  
+回退而非修正**
+
+**Compact** asks the model to summarize the conversation so far, then replaces the history with that summary. It's lossy, but you didn't have to write anything yourself and Claude might be more thorough in including important learnings or files. You can also steer it by passing instructions (`/compact focus on the auth refactor, drop the test debugging`).  
+压缩模式要求模型总结迄今为止的对话内容，随后用该摘要替换完整对话记录。这种方式虽然存在信息损耗，但您无需亲自动笔撰写，且 Claude 在纳入重要学习要点或文件时可能更为全面。您还可以通过传递指令（ `/compact focus on the auth refactor, drop the test debugging` ）来引导总结方向。
+
+With `/clear`_you_ write down what matters ("we're refactoring the auth middleware, the constraint is X, the files that matter are A and B, we've ruled out approach Y") and start clean. It's more work, but the resulting context is what you decided was relevant.   
+使用 `/clear`  时，你写下重要事项（“我们正在重构认证中间件，约束条件是 X，相关文件是 A 和 B，我们已经排除了方法 Y”），然后重新开始。这需要更多工作，但最终得到的上下文正是你决定相关的内容。
+
+[[Subagents](https://claude.com/blog/subagents-in-claude-code)](https://claude.com/blog/subagents-in-claude-code) tend to work well when you know in advance that a chunk of work will produce a lot of intermediate output you won't need again.  
+当您预先知道某项工作会产生大量不再需要的中间输出时，子代理通常能发挥良好作用。
+
+When Claude spawns a subagent via the Agent tool, that subagent gets its own fresh context window. It can do as much work as it needs to, and then synthesize its results so only the final report comes back to the parent.  
+当 Claude 通过 Agent 工具生成子代理时，该子代理会获得自己全新的上下文窗口。它可以完成所需的所有工作，然后综合其结果，仅将最终报告返回给父代理。
+
+
+The mental test we use at Anthropic: _will I need this tool output again, or just the conclusion?_   
+我们在 Anthropic 使用的思维测试：我将来会需要这个工具的输出结果，还是只需要结论？
+
+While Claude Code will automatically call subagents, you may want to tell it to explicitly do this. For example, you may want to tell it to:  
+虽然 Claude Code 会自动调用子代理，但您可能希望明确指示它这样做。例如，您可以告诉它：
+
+- “Spin up a subagent to verify the result of this work based on the following spec file”  
+    “启动一个子代理，根据以下规范文件验证此工作的结果”
+- “Spin off a subagent to read through this other codebase and summarize how it implemented the auth flow, then implement it yourself in the same way”  
+    “创建一个子代理来通读另一个代码库，总结其如何实现认证流程，然后以相同的方式自行实现。”
+- “Spin off a subagent to write the docs on this feature based on my git changes”  
+    “基于我的 git 变更，创建一个子代理来编写此功能的文档。”
+
+
+## What is a subagent?   
+什么是子代理？
+
+Subagents are self-contained agents that operate with their own context windows. When Claude spawns a subagent, that assistant works independently to read files, explore code, or make changes. When it completes its task, the subagent returns only the relevant results to the main conversation.  
+子代理是拥有独立上下文窗口的自主代理。当 Claude 生成子代理时，该助手会独立运作，读取文件、探索代码或进行修改。完成任务后，子代理仅将相关结果返回至主对话。
+
+Each subagent starts fresh, unburdened by the history of the conversation or invoked skills. Multiple subagents can run in parallel, and each can have different permissions: a research subagent might have read-only access, while an implementation subagent gets full editing capabilities.  
+每个子代理都从零开始运作，不受对话历史或已调用技能的影响。多个子代理可并行运行，且各自可拥有不同权限：研究型子代理可能仅具备只读权限，而实施型子代理则拥有完整编辑能力。
+
+Claude Code includes several built-in subagent types, including:  
+Claude Code 内置了多种子代理类型，包括：
+
+- **General-purpose agents** for complex multi-step tasks  
+    通用型代理，适用于复杂的多步骤任务
+- **Plan agents** that research codebases before presenting implementation strategies  
+    规划型代理，在提出实施策略前先研究代码库
+- **Explore agents** optimized for fast, read-only code search   
+    探索型代理，专为快速、只读的代码搜索而优化
+
+Claude Code often spawns subagents on its own to handle assigned tasks. It's also possible to direct that behavior explicitly and to define reusable specialists that Claude delegates to automatically. Knowing when to reach for subagents is what makes the feature useful.   
+Claude Code 通常会自行生成子代理来处理分配的任务。也可以明确指示该行为，并定义可重复使用的专家型代理，由 Claude 自动委派。了解何时使用子代理是使该功能发挥作用的关键。
+
+## When should you use subagents?   
+何时应该使用子代理？
+
+Certain categories of work benefit clearly from subagent delegation. Learning to recognize them makes the feature far more effective.  
+某些类别的工作明显受益于子代理委托。学会识别这些情况能让该功能发挥更大效用。
+
+### Research-heavy tasks  研究密集型任务
+
+When understanding how something works is a prerequisite to changing it, a subagent can explore the codebase and return a summary rather than dumping dozens of files into the conversation.  
+当理解某物运作原理是修改它的先决条件时，子代理可以探索代码库并返回摘要，而不是将数十个文件直接倾倒入对话中。
+
+**The signal:** Gathering context requires reading dozens of files.  
+信号：收集上下文需要阅读数十个文件。
+
+**The benefit:** The main conversation stays clean, and synthesized findings arrive instead of raw content.  
+优势：主对话保持简洁，呈现的是综合后的发现而非原始内容。
+
+### Multiple independent tasks  
+多个独立任务
+
+When fixing errors across several files, updating patterns in multiple components, or making changes that don't depend on each other, parallel subagents complete the task faster.  
+当需要跨多个文件修复错误、更新多个组件的模式，或进行彼此不依赖的更改时，并行子代理能更快完成任务。
+
+**The signal:** Sub-tasks have no dependencies between them.  
+信号：子任务之间没有依赖关系。
+
+**The benefit:** Three subagents working simultaneously generally finish the task in less time.  
+优势：三个子代理同时工作通常能在更短时间内完成任务。
+
+### Fresh perspective needed  需要新的视角
+
+When an unbiased review of an implementation is the goal, a subagent provides a clean slate because it doesn't inherit the assumptions, context, or blind spots from the primary conversation.  
+当目标是实现对某个实施方案的公正审查时，子代理提供了一个全新的起点，因为它不会继承主对话中的假设、背景或盲点。
+
+**The signal:** Verification is needed without conversation history influencing the analysis.  
+信号：需要验证，且不受对话历史影响分析。
+
+**The benefit:** Cleaner, more objective feedback.  
+优势：更清晰、更客观的反馈。
+
+**Pro-tip:** The /clear command also resets context and conversation history, providing a similarly unbiased slate, but at the cost of losing that history entirely. A subagent achieves the same fresh perspective while the main conversation stays intact.  
+专业建议：使用 /clear 命令同样可以重置上下文和对话历史，提供类似的无偏见起点，但代价是完全丢失历史记录。而使用子代理则能在保持主对话完整的同时，获得同样全新的视角。
+
+### Verification before committing  
+提交前验证
+
+Before finalizing changes, an independent subagent can verify the implementation isn't overfitting to tests or missing edge cases.  
+在最终确定更改之前，一个独立的子代理可以验证实现是否过度拟合测试或遗漏边缘情况。
+
+**The signal:** A second opinion is warranted before committing code.  
+信号：在提交代码之前，有必要征求第二意见。
+
+**The benefit:** Catches issues that familiarity with the code might obscure.  
+好处：能够发现因对代码过于熟悉而可能忽略的问题。
+
+
+### Conversational invocation  
+对话式调用
+
+The most flexible approach is simply asking Claude to use subagents in conversation. This works across all Claude Code interfaces: terminal, VS Code, JetBrains, the web, and desktop applications.   
+最灵活的方法是在对话中直接要求 Claude 使用子代理。这种方法适用于所有 Claude Code 界面：终端、VS Code、JetBrains、网页版以及桌面应用程序。
+
+Natural language patterns that reliably invoke subagents include:  
+可靠调用子代理的自然语言模式包括：
+
+- "Use a subagent to explore how authentication works in this codebase"  
+    "使用子代理来探索此代码库中的身份验证机制如何运作"
+- "Have a separate agent review this code for security issues"  
+    "请安排一个独立的代理来审查这段代码是否存在安全问题"
+- "Research this in parallel. Check the API routes, database models, and frontend components simultaneously"  
+    并行研究。同时检查 API 路由、数据库模型和前端组件。
+- "Spin up subagents to fix these TypeScript errors across the different packages"  
+    启动子代理来修复这些不同包中的 TypeScript 错误
+
+Being explicit matters. Specify the scope, request parallel execution when tasks are independent, and describe the desired output.  
+明确性至关重要。指定任务范围，在任务独立时请求并行执行，并描述期望的输出结果。
+
+Tips for effective conversational invocation include:  
+有效进行对话式调用的技巧包括：
+
+- **Scope tasks clearly.** "Explore how payments work" beats "explore everything."  
+    明确界定任务范围。“探索支付系统如何运作”优于“探索一切”。
+- **Request parallelization explicitly.** Say "these can run in parallel" or "work on all three simultaneously."  
+    明确请求并行处理。请说“这些可以并行运行”或“同时处理所有三个任务”。
+- **Specify what should be returned.** Summaries, specific findings, or recommendations. Naming the output format helps Claude deliver it.  
+    指定应返回的内容。总结、具体发现或建议。明确输出格式有助于 Claude 准确交付。
+- **Ask for fresh context when unbiased analysis matters.** "Use a subagent that does not see our previous discussion" ensures clean evaluation.  
+    当需要公正分析时，请要求提供全新背景信息。"使用一个看不到我们先前讨论的子代理"能确保评估的客观性。
+
+**Pro-tip:** When a subagent is taking a while, Ctrl+B sends it to the background. The conversation can continue while it runs, and results surface automatically when it finishes. The /tasks command shows anything running in the background.  
+专业提示：当子代理处理耗时较长时，按 Ctrl+B 可将其切换至后台运行。在此期间对话仍可继续进行，任务完成后结果将自动显示。使用/tasks 命令可查看所有后台运行中的任务。
+
+## When shouldn’t you use subagents?   
+何时不应使用子代理？
+
+While subagents are a useful feature, subagents carry overhead. Each one spins up its own context, consumes tokens, and adds a layer of indirection between the developer and the work. They're worth that cost when context isolation, parallelism, or a fresh perspective actually helps.   
+虽然子代理是一项实用功能，但它们也伴随着开销。每个子代理都会创建独立的上下文环境、消耗令牌，并在开发者与工作之间增加一层间接性。当上下文隔离、并行处理或全新视角确实能带来帮助时，这些代价是值得的。
+
+For smaller or tightly sequential tasks, sticking to the main conversation is usually simpler, for example:   
+对于较小或紧密连续的任务，通常坚持在主对话中进行更为简便，例如：
+
+- **Sequential, dependent work.** When step two needs the full output of step one, and step three needs both, a single session handling the chain is usually cleaner than a relay of subagents passing state through files.  
+    顺序性、依赖性的工作。当第二步需要第一步的完整输出，而第三步需要前两步的结果时，由单一会话处理整个工作链通常比通过文件在子代理间传递状态更简洁明了。
+- **Same-file edits.** Two subagents editing the same file in parallel is a recipe for conflict. In this scenario, keep tightly coupled changes in one context window.  
+    同一文件编辑。两个子代理并行编辑同一文件极易引发冲突。在此场景下，应将紧密耦合的变更集中在同一上下文窗口内处理。
+- **Small tasks.** For a quick fix or a focused question, the overhead of delegation outweighs the benefit. Just prompt or ask in your main conversation.    
+    小型任务。对于快速修复或针对性问题，委托的开销会超过其带来的好处。直接在您的主对话中提出请求或询问即可。
+- **Too many specialist agents.** It's tempting to define a custom subagent for everything, but flooding Claude with options makes automatic delegation less reliable. Most teams settle on a handful of well-scoped agents rather than a sprawling roster.  
+    过多专业代理。为每件事都定义自定义子代理很诱人，但给 Claude 提供过多选项会降低自动委托的可靠性。大多数团队最终会选择少数几个职责明确的代理，而不是建立一个庞大臃肿的代理名单。
+- **Work that needs agents to coordinate with each other.** Subagents report back to the main conversation but can't talk to one another. For tasks where subagents need to communicate, use [[agent teams](https://code.claude.com/docs/en/agent-teams)](https://code.claude.com/docs/en/agent-teams). With agent teams, subagents coordinate across separate sessions rather than within one, which makes them heavier and more expensive. For more guidance on when to use subagents vs Agent Teams, check out our [[Claude Code agent teams docs](https://code.claude.com/docs/en/agent-teams)](https://code.claude.com/docs/en/agent-teams).  
+    需要多个代理相互协调的工作。子代理会向主对话报告，但彼此之间无法直接交流。对于需要子代理之间进行通信的任务，请使用代理团队。使用代理团队时，子代理是在不同的会话中进行协调，而不是在同一个会话内，这使得它们更重且成本更高。关于何时使用子代理与代理团队的更多指导，请查阅我们的 Claude Code 代理团队文档。
+
+The signals described earlier (i.e., needing a second opinion, a lack of dependencies between sub-tasks, and extensive research) make it clear when delegation to a subagent is worth it.  
+如前所述的信号（即需要第二意见、子任务间缺乏依赖关系以及广泛的研究）清楚地表明了何时值得将任务委派给子代理。

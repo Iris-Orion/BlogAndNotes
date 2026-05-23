@@ -1,5 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Back To The Basic</title><link>https://Iris-Orion.github.io/BlogAndNotes</link><description>硬币的反面是什么？</description><copyright>Back To The Basic</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pbs.twimg.com/profile_images/1928018240154079232/YlEruiHt_400x400.jpg</url><title>avatar</title><link>https://Iris-Orion.github.io/BlogAndNotes</link></image><lastBuildDate>Mon, 18 May 2026 09:35:12 +0000</lastBuildDate><managingEditor>Back To The Basic</managingEditor><ttl>60</ttl><webMaster>Back To The Basic</webMaster><item><title>google cloud cdn fee</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/google%20cloud%20cdn%20fee.html</link><description>&lt;img width='1633' height='55' alt='Image' src='https://github.com/user-attachments/assets/8b2a9c42-1b3a-447c-8730-106f5cccc776' /&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Back To The Basic</title><link>https://Iris-Orion.github.io/BlogAndNotes</link><description>硬币的反面是什么？</description><copyright>Back To The Basic</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pbs.twimg.com/profile_images/1928018240154079232/YlEruiHt_400x400.jpg</url><title>avatar</title><link>https://Iris-Orion.github.io/BlogAndNotes</link></image><lastBuildDate>Sat, 23 May 2026 12:03:19 +0000</lastBuildDate><managingEditor>Back To The Basic</managingEditor><ttl>60</ttl><webMaster>Back To The Basic</webMaster><item><title>cc usage</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/cc%20usage.html</link><description>![[context_window.png|786]]
+
+&lt;img width='1440' height='440' alt='Image' src='https://github.com/user-attachments/assets/63a82b9f-34a6-4560-b098-7fb3dd2acc5c' /&gt;
+
+Say you've just asked Claude to do something and it's finished—you’ve now got some information in context (tool calls, tool outputs, your instructions) and you have a surprising number of options for what to do next:  
+假设你刚刚让 Claude 完成某项任务，现在它已经处理完毕——此时上下文中已包含一些信息（工具调用记录、工具输出结果、你的指令），而接下来你拥有令人惊讶的多种选择方案：
+
+- **Continue** — send another message in the same session  
+    继续对话——在同一会话中发送新消息
+- **`/rewind` (esc esc)** — jump back to a previous message and try again from there  
+    `/rewind` （按两次 esc 键）——跳转回之前的消息节点，从该处重新尝试
+- **`/clear`** — start a new session, usually with a brief you've distilled from what you just learned  
+    `/clear` ——开启全新会话，通常基于你从当前对话中提炼出的要点说明
+- **Compact** — summarize the session so far and keep going on top of the summary  
+    紧凑模式——总结当前会话内容，并在总结基础上继续推进
+- **Subagents** — delegate the next chunk of work to an agent with its own clean context, and only pull its result back in  
+    子代理模式——将下一部分工作委托给拥有独立干净上下文的代理，仅将其结果带回主会话
+
+## **Rewinding instead of correcting  
+回退而非修正**
+
+**Compact** asks the model to summarize the conversation so far, then replaces the history with that summary. It's lossy, but you didn't have to write anything yourself and Claude might be more thorough in including important learnings or files. You can also steer it by passing instructions (`/compact focus on the auth refactor, drop the test debugging`).  
+压缩模式要求模型总结迄今为止的对话内容，随后用该摘要替换完整对话记录。</description><guid isPermaLink="true">https://Iris-Orion.github.io/BlogAndNotes/post/cc%20usage.html</guid><pubDate>Sat, 23 May 2026 12:02:47 +0000</pubDate></item><item><title>google cloud cdn fee</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/google%20cloud%20cdn%20fee.html</link><description>&lt;img width='1633' height='55' alt='Image' src='https://github.com/user-attachments/assets/8b2a9c42-1b3a-447c-8730-106f5cccc776' /&gt;
 created by cdn upload and download support by providers such as cloudflare , these are beyond 200GB free tier plan。</description><guid isPermaLink="true">https://Iris-Orion.github.io/BlogAndNotes/post/google%20cloud%20cdn%20fee.html</guid><pubDate>Mon, 18 May 2026 09:31:21 +0000</pubDate></item><item><title>Don't Become a Scientist!</title><link>https://Iris-Orion.github.io/BlogAndNotes/post/Don%27t%20Become%20a%20Scientist%21.html</link><description>Don't Become a Scientist!
 
 Jonathan I. Katz
